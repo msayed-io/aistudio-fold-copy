@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.2] - 2026-10-04
+
+- Retry Minimap initialization until the dynamically rendered AI Studio chat panel exists.
+- Preserve the rail after route and panel hydration instead of silently stopping at startup.
+
+
 ## [1.1.1] - 2026-10-04
 
 - Corrected the minimap anchor from the full viewport to the actual AI Studio chat panel.

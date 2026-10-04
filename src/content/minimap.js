@@ -1,5 +1,5 @@
 (() => {
-  const A=globalThis.AFC=globalThis.AFC||{}; let root, panel, rail, track, preview, raf=0;
+  const A=globalThis.AFC=globalThis.AFC||{}; let root, panel, rail, track, preview, raf=0, bootObserver, bootTimer;
   const state={items:[],active:null,signature:''};
   const textOf=turn=>{const bubble=turn.querySelector('div.bubble.user');return (bubble?.textContent||'').replace(/\s+/g,' ').trim();};
   const scrollHost=()=>A.q(document,A.selectors.scroll).el||document.scrollingElement||document.documentElement;
@@ -13,5 +13,13 @@
   const updatePositions=()=>{raf=0;if(!rail||!root)return;frame();const m=hostMetrics();const usable=Math.max(1,m.height);for(const item of state.items){const tr=item.turn.getBoundingClientRect();const absolute=m.scrollTop+(tr.top-m.top);const pct=Math.max(0,Math.min(1,absolute/usable));item.button.style.top=`${pct*100}%`;}};
   const render=()=>{if(!root||!track)return;const turns=[...root.querySelectorAll(A.selectors.turn[0])].filter(t=>t.querySelector('div.bubble.user'));const signature=turns.map(t=>t.getAttribute('data-turn-id')||textOf(t).slice(0,32)).join('|');if(signature===state.signature){updatePositions();return;}state.signature=signature;state.items=turns.map((turn,i)=>({turn,index:i+1,text:textOf(turn),button:null}));track.textContent='';for(const item of state.items){const b=make('button','afc-minimap-item');b.type='button';b.setAttribute('aria-label',`الانتقال إلى رسالة المستخدم ${item.index}`);b.addEventListener('mouseenter',()=>showPreview(item));b.addEventListener('focus',()=>showPreview(item));b.addEventListener('mouseleave',hidePreview);b.addEventListener('blur',hidePreview);b.addEventListener('click',()=>jump(item));item.button=b;track.appendChild(b);}updatePositions();};
   const schedule=()=>{if(!raf)raf=requestAnimationFrame(updatePositions);};
-  A.startMinimap=()=>{if(rail)return;root=scrollHost();panel=chatPanel();if(!panel)return;rail=make('aside','afc-minimap');rail.setAttribute('aria-label','التنقل بين رسائل المستخدم');track=make('div','afc-minimap-track');preview=make('div','afc-minimap-preview');preview.hidden=true;rail.append(track,preview);document.body.appendChild(rail);render();const observer=new MutationObserver(m=>{if(m.some(x=>[...x.addedNodes,...x.removedNodes].some(n=>n.nodeType===Node.ELEMENT_NODE&&!n.closest?.('[data-afc-ui]'))))render();});observer.observe(root,{subtree:true,childList:true});root.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});};
+  A.startMinimap=()=>{
+    if(rail)return;
+    root=scrollHost(); panel=chatPanel();
+    if(!root||!panel){
+      clearTimeout(bootTimer); bootTimer=setTimeout(()=>A.startMinimap(),500);
+      if(!bootObserver){bootObserver=new MutationObserver(()=>{if(chatPanel()){bootObserver.disconnect();bootObserver=null;A.startMinimap();}});bootObserver.observe(document.body,{subtree:true,childList:true});}
+      return;
+    }
+    rail=make('aside','afc-minimap');rail.setAttribute('aria-label','التنقل بين رسائل المستخدم');track=make('div','afc-minimap-track');preview=make('div','afc-minimap-preview');preview.hidden=true;rail.append(track,preview);document.body.appendChild(rail);render();const observer=new MutationObserver(m=>{if(m.some(x=>[...x.addedNodes,...x.removedNodes].some(n=>n.nodeType===Node.ELEMENT_NODE&&!n.closest?.('[data-afc-ui]'))))render();});observer.observe(root,{subtree:true,childList:true});root.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});};
 })();

@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3] - 2026-10-04
+
+- Restore visible folding using robust natural-height measurement and important clipping rules.
+- Preserve the original AI Studio text host without moving its children.
+- Render copy controls as plain glyphs without circular borders or backgrounds.
+- Keep the expand/collapse control as the intentional visual affordance.
+
+
 ## [1.0.2] - 2026-10-04
 
 - Prevent scroll jitter by preserving AI Studio message DOM structure.

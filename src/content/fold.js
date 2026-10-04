@@ -10,7 +10,8 @@
     const wrap=text;
     wrap.dataset.afcText='';
     const limit=lineHeight(bubble)*(opts.lines+opts.tolerance);
-    const needs=wrap.scrollHeight>limit;
+    const naturalHeight=Math.max(wrap.scrollHeight||0, Math.ceil(wrap.getBoundingClientRect().height||0));
+    const needs=naturalHeight>limit+2;
     const k=key(bubble); const open=states.get(k)===true;
     bubble.dataset.afcFolded=needs&&!open?'true':'false';
     if(!needs){bubble.querySelector('[data-afc-toggle]')?.remove();return;}

@@ -1,0 +1,5 @@
+{
+  "name":"aistudio-fold-copy","version":"1.0.0","private":true,"description":"Production-grade MV3 content script for AI Studio Build chats",
+  "scripts":{"test":"node --test tests/unit/*.test.js","lint":"node --check src/content/*.js","validate":"node -e \"const m=require('./manifest.json'); if(m.manifest_version!==3||m.permissions.join(',')!=='storage')process.exit(1)\""},
+  "devDependencies":{}
+}

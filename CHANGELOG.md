@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1] - 2026-10-04
+
+- Corrected the minimap anchor from the full viewport to the actual AI Studio chat panel.
+- Replaced floating point-like markers with short horizontal message bars.
+- Kept hover previews inside the chat panel boundary instead of the preview pane.
+
+
 ## [1.1.0] - 2026-10-04
 
 - Added a right-side conversation minimap with one marker per user message.

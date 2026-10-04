@@ -23,5 +23,5 @@
   };
   const load=()=>chrome.storage.sync.get(A.settings).then(s=>{A.settings=Object.assign(A.settings,s);A.schedule();}).catch(()=>A.schedule());
   chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='sync')return;for(const [k,v] of Object.entries(changes))A.settings[k]=v.newValue;A.resetFolds();A.schedule();});
-  if(location.pathname.startsWith('/apps/')){load();A.startObserver();window.addEventListener('resize',A.schedule,{passive:true});}
+  if(location.pathname.startsWith('/apps/')){load();A.startMinimap?.();A.startObserver();window.addEventListener('resize',A.schedule,{passive:true});}
 })();

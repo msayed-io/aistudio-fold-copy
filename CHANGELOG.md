@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] - 2026-10-04
+
+- Added a right-side conversation minimap with one marker per user message.
+- Added hover previews and smooth click-to-jump navigation to user messages.
+- Added a new transparent premium application logo and Chrome icon set.
+
+
 ## [1.0.4] - 2026-10-04
 
 - Place user copy below the user bubble in a dedicated action row.

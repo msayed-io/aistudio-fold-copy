@@ -1,8 +1,7 @@
-/* The rail is positioned from the measured AI Studio chat panel, never from the preview pane. */
-.afc-minimap{position:fixed;inset-inline:auto auto auto auto;width:26px;height:300px;display:block;z-index:2147483000;direction:ltr;pointer-events:none;}
-.afc-minimap-track{position:relative;width:26px;height:100%;pointer-events:auto;}
-.afc-minimap-item{all:unset;box-sizing:border-box;position:absolute;right:3px;top:0;width:16px;height:3px;border-radius:999px;background:color-mix(in srgb,currentColor 38%,transparent);opacity:.62;cursor:pointer;transition:width .12s ease,opacity .12s ease,background .12s ease,transform .12s ease;}
-.afc-minimap-item:hover,.afc-minimap-item:focus-visible{width:21px;opacity:1;background:#78aaff;transform:translateX(-2px);outline:none;}
-.afc-minimap-preview{position:fixed;width:min(300px,calc(100vw - 70px));padding:10px 12px;border:1px solid color-mix(in srgb,currentColor 16%,transparent);border-radius:10px;background:color-mix(in srgb,#202124 94%,transparent);box-shadow:0 10px 28px #0008;color:inherit;display:flex;flex-direction:column;gap:4px;font:12px/1.45 system-ui,sans-serif;direction:rtl;pointer-events:none;}
-.afc-minimap-preview[hidden]{display:none;}.afc-minimap-preview-index{font-size:11px;color:#8ab4f8;font-weight:600;}.afc-minimap-preview-text{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit;opacity:.86;}
-@media(max-width:700px){.afc-minimap{width:22px}.afc-minimap-track{width:22px}.afc-minimap-item{right:2px;width:13px}.afc-minimap-item:hover,.afc-minimap-item:focus-visible{width:18px;}}
+.afc-minimap{position:fixed;inset-inline:auto auto auto auto;width:28px;height:300px;display:block;z-index:2147483000;direction:ltr;pointer-events:none;}
+.afc-minimap-track{position:relative;width:28px;height:100%;pointer-events:auto;}
+.afc-minimap-item{all:unset;box-sizing:border-box;position:absolute;right:3px;top:0;width:16px;height:3px;border-radius:999px;background:color-mix(in srgb,currentColor 42%,transparent);opacity:.68;cursor:pointer;transition:width .12s ease,opacity .12s ease,background .12s ease;}
+.afc-minimap-item:hover,.afc-minimap-item:focus-visible{width:20px;opacity:1;background:#78aaff;outline:none;}
+.afc-minimap-preview{position:absolute;left:8px;top:8px;width:270px;max-width:calc(100vw - 40px);padding:9px 11px;border:1px solid color-mix(in srgb,currentColor 18%,transparent);border-radius:10px;background:color-mix(in srgb,#202124 96%,transparent);box-shadow:0 10px 28px #0008;color:inherit;display:flex;flex-direction:column;gap:3px;font:12px/1.45 system-ui,sans-serif;direction:rtl;pointer-events:none;z-index:2;}
+.afc-minimap-preview[hidden]{display:none}.afc-minimap-preview-index{font-size:11px;color:#8ab4f8;font-weight:600}.afc-minimap-preview-text{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit;opacity:.88}
+@media(max-width:700px){.afc-minimap{width:24px}.afc-minimap-track{width:24px}.afc-minimap-item{right:2px;width:13px}.afc-minimap-item:hover,.afc-minimap-item:focus-visible{width:17px}.afc-minimap-preview{width:220px}}

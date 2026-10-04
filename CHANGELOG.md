@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3] - 2026-10-04
+
+- Discover all user turns from the chat panel instead of the transient scroll container.
+- Keep the hover preview inside the minimap card.
+- Use the nearest real scroll ancestor for stable, non-invasive positioning.
+
+
 ## [1.1.2] - 2026-10-04
 
 - Retry Minimap initialization until the dynamically rendered AI Studio chat panel exists.

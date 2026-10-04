@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4] - 2026-10-04
+
+- Open the hover card inward into the chat panel instead of outward into Preview.
+- Reduce the minimap height to match the reference card proportions.
+- Distribute every discovered user-message bar across the rail so none overlap or disappear.
+
+
 ## [1.1.3] - 2026-10-04
 
 - Discover all user turns from the chat panel instead of the transient scroll container.

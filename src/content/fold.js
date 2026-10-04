@@ -22,7 +22,7 @@
       btn.addEventListener('click',()=>{const next=states.get(k)!==true;states.set(k,next);A.applyFold(bubble,opts);});
       bubble.appendChild(btn);
     }
-    btn.setAttribute('aria-expanded',String(open)); btn.setAttribute('aria-label',open?'طي الرسالة':'فتح الرسالة'); btn.textContent=open?'⌃':'⌄';
+    btn.setAttribute('aria-expanded',String(open)); btn.setAttribute('aria-label',open?'طي الرسالة':'فتح الرسالة'); btn.textContent='';
   };
   A.resetFolds=()=>{states.clear();document.querySelectorAll('[data-afc-folded="true"], [data-afc-text]').forEach(el=>{if(el.matches('[data-afc-text]'))el.removeAttribute('data-afc-text');else el.removeAttribute('data-afc-folded');});document.querySelectorAll('[data-afc-toggle]').forEach(b=>b.remove());};
 })();

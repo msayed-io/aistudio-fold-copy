@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4] - 2026-10-04
+
+- Place user copy below the user bubble in a dedicated action row.
+- Join model copy with AI Studio native response controls when available.
+- Replace the text arrow with a precise CSS chevron matching the reference.
+- Keep copy controls plain and borderless while retaining the fold control affordance.
+
+
 ## [1.0.3] - 2026-10-04
 
 - Restore visible folding using robust natural-height measurement and important clipping rules.

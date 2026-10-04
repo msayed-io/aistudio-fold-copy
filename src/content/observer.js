@@ -5,7 +5,7 @@
   const addTurn=node=>{const turn=turnOf(node);if(turn)pending.add(turn);};
   A.process=()=>{
     raf=0;
-    const root=A.q(document,A.selectors.scroll).el||document;
+    const root=A.q(document,A.selectors.scroll).el||document.body;
     const turns=processAll?A.qAll(root,A.selectors.turn).els:[...pending];
     processAll=false; pending.clear();
     let n=0;
@@ -13,7 +13,7 @@
       if(!turn?.isConnected)continue;
       const type=A.classifyTurn(turn,A.settings.debug); if(type==='unknown')continue;
       const bubble=type==='user'?A.q(turn,A.selectors.userBubble).el:A.q(turn,A.selectors.modelBubble).el; if(!bubble)continue;
-      if(type==='user'&&A.settings.foldUserMessages)A.applyFold(bubble);
+      if(type==='user'&&A.settings.foldUserMessages){A.applyFold(bubble);if(!turn.dataset.afcFoldRetried){turn.dataset.afcFoldRetried='1';setTimeout(()=>{if(turn.isConnected)A.schedule([turn]);},80);setTimeout(()=>{if(turn.isConnected)A.schedule([turn]);},320);}}
       if((type==='user'&&A.settings.copyUserMessages)||(type==='model'&&A.settings.copyModelMessages))A.ensureCopy(bubble,type); else bubble.querySelector('[data-afc-copy]')?.remove();
       if(type==='model')A.updateCopyAvailability?.(bubble); n++;
     }
@@ -21,7 +21,7 @@
   };
   A.schedule=(turns=null)=>{if(turns)for(const turn of turns)pending.add(turn);if(!raf)raf=requestAnimationFrame(A.process);};
   A.startObserver=()=>{
-    const root=A.q(document,A.selectors.scroll).el||document.body; observer?.disconnect();
+    const root=document.body; observer?.disconnect();
     observer=new MutationObserver(mutations=>{
       const changed=[];
       for(const mutation of mutations){
@@ -35,7 +35,7 @@
       if(changed.length)A.schedule(changed);
     });
     // Deliberately do not watch class/aria-expanded: AI Studio changes those while scrolling.
-    observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['aria-busy','data-streaming']});
+    observer.observe(root,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['aria-busy','data-streaming']});
     A.schedule();
   };
 })();

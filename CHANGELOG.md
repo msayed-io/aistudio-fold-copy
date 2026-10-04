@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.0] - 2026-10-04
+
+- Removed the conversation Minimap and all related assets.
+- Added a fixed down-arrow control that appears only when the chat is away from the bottom.
+- Anchored the control to the chat panel without changing layout or scroll dimensions.
+- Made the observer watch the document body for dynamically hydrated AI Studio panels.
+- Added early fold retries and character-data observation so long user messages fold immediately after sending.
+
+
 ## [1.1.4] - 2026-10-04
 
 - Open the hover card inward into the chat panel instead of outward into Preview.

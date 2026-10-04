@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_appName__",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "__MSG_appDescription__",
   "default_locale": "en",
   "minimum_chrome_version": "110",
@@ -14,8 +14,7 @@
         "https://aistudio.google.com/apps/*"
       ],
       "css": [
-        "src/styles/content.css",
-        "src/styles/minimap.css"
+        "src/styles/content.css"
       ],
       "js": [
         "src/content/selectors.js",
@@ -23,7 +22,7 @@
         "src/content/dom-to-md.js",
         "src/content/copy.js",
         "src/content/fold.js",
-        "src/content/minimap.js",
+        "src/content/bottom.js",
         "src/content/observer.js",
         "src/content/main.js"
       ],

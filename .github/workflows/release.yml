@@ -1,0 +1,20 @@
+name: Release zip
+on:
+  push:
+    tags: ['v*']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build extension zip
+        run: |
+          mkdir -p dist
+          zip -r "dist/aistudio-fold-copy-${GITHUB_REF_NAME}.zip" . \
+            -x '.git/*' 'dist/*' 'node_modules/*' '*.log' 'docs/build-brief.md' \
+            'tests/fixtures/aistudio-dom-snapshot*.json' 'docs/reference-card.jpeg'
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/aistudio-fold-copy-${{ github.ref_name }}.zip
